@@ -1,0 +1,65 @@
+.container2 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Allow products to wrap to the next line on smaller screens */
+    gap: 20px; /* Add spacing between products */
+    margin: 20px;
+    
+}
+
+/* Style product items */
+.product {
+    flex: 0 0 calc(20% - 20px); /* Three columns, with spacing in between */
+    text-align: center;
+    border: 1px solid #ddd; /* Add a border for visual separation */
+    padding: 10px;
+    background-color: #f9f9f9; /* Add a background color */
+}
+.product-image {
+    height: 200px; /* Set the height for the image area */
+    background-image: url('sd.png'); /* Add your image URL here */
+    background-size: cover; /* Cover the entire area with the image */
+    background-position: center top; /* Position the image to cover the upper part */
+}
+
+.product img {
+    width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.price {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button {
+    background-color: #141f82;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Media query for screens with a maximum width of 768px (typical mobile screens) */
+@media (max-width: 768px) {
+    .product {
+        flex: 0 0 calc(50% - 20px); /* Two columns on smaller screens */
+    }
+}
