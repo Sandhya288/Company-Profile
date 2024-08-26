@@ -13,8 +13,8 @@ export const Hero = () => {
         <p className={styles.description}>
         "ELEVATING DIGITAL EXCELLENCE, ONE SOLUTION AT A TIME"
         </p>
-        <a href="" className={styles.contactBtn}>
-          Learn More
+        <a href="https://education-profile.vercel.app/" className={styles.contactBtn}>
+          Courses
         </a>
         
       </div>
