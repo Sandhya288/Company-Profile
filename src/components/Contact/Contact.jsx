@@ -1,20 +1,44 @@
-// ContactUsComponent.jsx
-import React from 'react';
-import "./Contact.css"
+import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
+import "./Contact.css";
 
 const ContactUsComponent = () => {
+  const [formData, setFormData] = useState({
+    FirstName: '',
+    Email: '',
+    PhoneNumber: '',
+    Query: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_oqtrtbl', 'template_lam9ifs', e.target, 'Pb-BUuZlM-Sm0kmS8')
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          console.log(error.text);
+      });
+
+    e.target.reset();
+  };
+
   return (
     <div className="contact_us_6" id="contact">
       <h1 style={{marginTop: '20px', paddingTop: '20px'}}>CONTACT US</h1>
       <div className="responsive-container-block container">
-        <form className="form-box" id="contactForm" netlify>
+        <form className="form-box" id="contactForm" onSubmit={handleSubmit}>
           <div className="container-block form-wrapper">
             <div className="mob-text">
               <p className="text-blk contactus-head" style={{color: '#141f82'}}>
                 Get in Touch
-              </p>
-              <p className="text-blk contactus-subhead">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Felis diam lectus sapien.
               </p>
             </div>
             <div className="responsive-container-block" id="i2cbk">
@@ -22,25 +46,25 @@ const ContactUsComponent = () => {
                 <p className="text-blk input-title">
                   FIRST NAME
                 </p>
-                <input className="input" id="ijowk-3" name="FirstName" placeholder="Please enter first name..." />
+                <input className="input" id="ijowk-3" name="FirstName" placeholder="Please enter first name..." onChange={handleChange} />
               </div>
               <div className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ip1yp">
                 <p className="text-blk input-title">
                   EMAIL
                 </p>
-                <input className="input" id="ipmgh-3" name="Email" placeholder="Please enter email..." />
+                <input className="input" id="ipmgh-3" name="Email" placeholder="Please enter email..." onChange={handleChange} />
               </div>
               <div className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="ih9wi">
                 <p className="text-blk input-title">
                   PHONE NUMBER
                 </p>
-                <input className="input" id="imgis-3" name="PhoneNumber" placeholder="Please enter phone number..." />
+                <input className="input" id="imgis-3" name="PhoneNumber" placeholder="Please enter phone number..." onChange={handleChange} />
               </div>
               <div className="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-3">
                 <p className="text-blk input-title">
                   WHAT DO YOU HAVE IN MIND ?
                 </p>
-                <textarea className="textinput" id="i5vyy-3" placeholder="Please enter query..."></textarea>
+                <textarea className="textinput" id="i5vyy-3" name="Query" placeholder="Please enter query..." onChange={handleChange}></textarea>
               </div>
             </div>
             <button className="submit-btn" id="w-c-s-bgc_p-1-dm-id-2" style={{backgroundColor: '#141f82'}}>
@@ -57,7 +81,6 @@ const ContactUsComponent = () => {
               2STAR IT SOLUTION PRIVATE LIMITED<br />
               AIC Building, 3rd floor, office no-7. <br />
               NITTE college campus <br />
-
               +91 9606017246 <br />
               +91 7899410893
             </p>
